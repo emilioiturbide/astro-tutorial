@@ -1,3 +1,19 @@
+---
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const title = data.get("title");
+    const content = data.get("content");
+    const author = data.get("author");
+    // Do something with the data
+    console.log(title);
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
 <form method="POST">
         <label for="title">Title:</label><br>
         <input type="text" id="title" name="title" required><br><br>
